@@ -1,254 +1,191 @@
-# Yahoo Finance Calendar Crawler
+# Yahoo Finance 이벤트 기반 주가 분석 시스템 기술 보고서
 
-Yahoo Finance의 캘린더 데이터를 수집하는 Scrapy 기반 크롤러입니다.
+## 개요
 
-## 기능
+본 보고서는 Yahoo Finance의 기업 실적 발표 및 경제 지표 데이터를 자동으로 수집하고, 이를 기반으로 이벤트 전후의 주가 변동을 분석하는 시스템의 구현 내용을 상세히 기술합니다.
 
-다음 4가지 캘린더 타입의 데이터를 수집합니다:
+## I. 시스템 구성 및 데이터 수집 프로세스
 
-1. **Earnings (실적 발표)**
-   - 기업 실적 발표 일정
-   - EPS 추정치, 실제 EPS, 서프라이즈 등
+### 1. 데이터 소스
 
-2. **Economic (경제 지표)**
-   - 각국의 경제 지표 발표
-   - 실제값, 예상치, 이전값 등
+본 시스템은 Yahoo Finance Calendar (https://finance.yahoo.com/calendar) 페이지의 다음 섹션들을 주요 데이터 소스로 활용합니다:
 
-3. **IPO (기업공개)**
-   - 신규 상장 일정
-   - 거래소, 공모가 범위, 주식수 등
+1) 실적 발표 (Earnings): https://finance.yahoo.com/calendar/earnings
+2) 경제 지표 (Economic Events): https://finance.yahoo.com/calendar/economic
+3) 기업공개 (IPO): https://finance.yahoo.com/calendar/ipo
+4) 주식 분할 (Stock Splits): https://finance.yahoo.com/calendar/splits
 
-4. **Stock Splits (주식 분할)**
-   - 주식 분할 일정
-   - 분할 비율, 지급일 등
+### 2. 크롤링 시스템 아키텍처
 
-## 설치 방법
+크롤링 시스템은 Scrapy 프레임워크를 기반으로 구현되었으며, 다음과 같은 컴포넌트로 구성됩니다:
 
-1. Python 3.11 이상이 필요합니다.
+```
+crawler_yf_event/
+├── spiders/
+│   └── yf_calendar_spider.py  # 크롤링 로직
+├── items.py                   # 데이터 모델
+├── pipelines.py              # 데이터 처리
+├── settings.py               # 환경 설정
+└── run_crawler.py            # 실행 스크립트
+```
 
-2. Poetry를 사용하여 의존성을 설치합니다:
+### 3. 데이터 수집 프로세스
+
+#### 3.1 크롤러 실행 방법
+
+크롤러는 다음과 같은 명령어로 실행할 수 있습니다:
+
 ```bash
-poetry install
+# 기본 실행 (현재 날짜 기준 전후 20일)
+python run_crawler.py
+
+# 날짜 범위 지정 실행
+python run_crawler.py --start-date 2024-03-01 --end-date 2024-03-31
+
+# 특정 이벤트 타입만 수집
+python run_crawler.py --events earnings,economic
+
+# 수집 기간 조정
+python run_crawler.py --days 30
 ```
 
-## 사용 방법
+#### 3.2 데이터 추출 메커니즘
 
-### 1. 기본 실행 (Scrapy 직접 실행)
-```bash
-poetry run scrapy crawl yahoo_calendar
-```
-- 기본적으로 오늘부터 7일간의 데이터를 수집합니다.
+Yahoo Finance의 캘린더 페이지에서 데이터를 추출하는 과정은 다음과 같습니다:
 
-### 2. 데이터 처리 스크립트 실행
-```bash
-# 기본 실행 (현재 시각 기준으로 파일명 자동 생성)
-poetry run python process_calendar_data.py
-# 결과: calendar_data_20240310_153021_earnings.json
-#       calendar_data_20240310_153021_economic.json
-#       calendar_data_20240310_153021_ipo.json
-#       calendar_data_20240310_153021_splits.json
+1) **페이지 구조 분석**
+   ```python
+   # 테이블 데이터 위치 XPath
+   table_xpath = '//*[@id="cal-res-table"]'
+   
+   # 실적 발표 데이터 예시
+   headers_xpath = './/thead/tr/th/text()'
+   rows_xpath = './/tbody/tr'
+   ```
 
-# 날짜 범위 지정
-poetry run python process_calendar_data.py --start-date 2024-03-10 --end-date 2024-03-17
+2) **페이지네이션 처리**
+   - 기본 페이지 크기: 100개 항목
+   - URL 파라미터: offset={n}, size=100
+   - 최대 수집 제한: earnings의 경우 1000개
 
-# 출력 파일명 접두사 지정
-poetry run python process_calendar_data.py --output my_calendar_data
-# 결과: my_calendar_data_earnings.json
-#       my_calendar_data_economic.json
-#       my_calendar_data_ipo.json
-#       my_calendar_data_splits.json
-```
+3) **데이터 정제**
+   - HTML 이스케이프 처리
+   - 숫자 데이터 타입 변환
+   - 날짜 형식 표준화
 
-### 스크립트 옵션 설명
-- `--start-date`: 시작일 (YYYY-MM-DD 형식)
-- `--end-date`: 종료일 (YYYY-MM-DD 형식)
-- `--output`: 출력 파일명 접두사 (미지정시 현재 시각 기반으로 자동 생성)
+### 4. 수집 데이터 구조
 
-## 데이터 처리
-
-### JSON에서 DataFrame으로 변환
-```python
-from yfinance_calendar.utils import json_to_dataframe
-
-# JSON 파일 읽기
-dataframes = json_to_dataframe('calendar_data.json')
-
-# 캘린더 타입별 DataFrame 접근
-earnings_df = dataframes['earnings']
-economic_df = dataframes['economic']
-ipo_df = dataframes['ipo']
-splits_df = dataframes['splits']
-```
-
-### DataFrame 구조
-
-각 캘린더 타입별 DataFrame은 다음과 같은 컬럼 구조를 가집니다:
-
-1. **Earnings (실적 발표)**
-```python
-columns = [
-    '날짜',         # datetime64[ns]
-    '종목코드',     # str
-    '기업명',       # str
-    '회계분기',     # str (Q1-Q4)
-    '회계연도',     # str
-    '실적발표시간',  # str (Before Market Open, After Market Close, ...)
-    'EPS예상',     # float64
-    'EPS실제',     # float64
-    '서프라이즈'    # float64
-]
-```
-
-2. **Economic (경제 지표)**
-```python
-columns = [
-    '날짜',       # datetime64[ns]
-    '지표명',     # str
-    '국가',       # str
-    '대상기간',   # str
-    '실제값',     # float64
-    '예상치',     # float64
-    '이전값',     # float64
-    '수정전값'    # float64
-]
-```
-
-3. **IPO (기업공개)**
-```python
-columns = [
-    '날짜',        # datetime64[ns]
-    '종목코드',    # str
-    '기업명',      # str
-    '거래소',      # str
-    '공모가범위',  # str
-    '확정공모가',  # str
-    '공모주식수'   # str
-]
-```
-
-4. **Stock Splits (주식 분할)**
-```python
-columns = [
-    '날짜',          # datetime64[ns]
-    '종목코드',      # str
-    '기업명',        # str
-    '지급일',        # datetime64[ns]
-    '옵션가능여부',  # str
-    '분할비율'       # str
-]
-```
-
-### 데이터 처리 예시
-
-```python
-from yfinance_calendar.utils import json_to_dataframe
-
-# JSON 파일 읽기
-dataframes = json_to_dataframe('calendar_data.json')
-
-# 실적 발표 데이터 처리
-earnings_df = dataframes['earnings']
-# EPS 서프라이즈가 10% 이상인 기업 찾기
-surprise_companies = earnings_df[earnings_df['서프라이즈'] >= 10]
-
-# 경제 지표 데이터 처리
-economic_df = dataframes['economic']
-# 특정 국가의 경제 지표 필터링
-us_indicators = economic_df[economic_df['국가'] == 'United States']
-
-# IPO 데이터 처리
-ipo_df = dataframes['ipo']
-# 특정 거래소의 IPO 목록
-nasdaq_ipos = ipo_df[ipo_df['거래소'] == 'NASDAQ']
-
-# 주식 분할 데이터 처리
-splits_df = dataframes['splits']
-# 다음 달에 예정된 주식 분할
-next_month_splits = splits_df[splits_df['지급일'].dt.month == (datetime.now().month + 1)]
-```
-
-## 데이터 구조
-
-수집된 데이터는 다음과 같은 구조를 가집니다:
-
+#### 4.1 실적 발표 데이터 (earnings)
 ```json
 {
-    "calendar_type": "earnings|economic|ipo|splits",
-    "date": "YYYY-MM-DD",
-    "symbol": "티커심볼",
-    "company": "회사명",
-    "event_name": "이벤트명",
-    "time": "이벤트 시간",
-    "additional_data": {
-        // 캘린더 타입별 추가 데이터
-    }
+    "event_type": "earnings",
+    "date": "2024-03-10",
+    "symbol": "AAPL",
+    "company": "Apple Inc.",
+    "eps_estimate": "1.50",
+    "reported_eps": "1.55",
+    "surprise": "3.33",
+    "call_time": "After Market Close"
 }
 ```
 
-### 캘린더 타입별 additional_data 구조
-
-1. Earnings
+#### 4.2 경제 지표 데이터 (economic)
 ```json
 {
-    "fiscal_quarter": "Q1/Q2/Q3/Q4",
-    "fiscal_year": "회계연도",
-    "event_title": "원본 이벤트명",
-    "call_time": "실적발표 시간",  // Before Market Open, After Market Close, During Market Trading, Time Not Supplied
-    "eps_estimate": "예상 EPS",
-    "reported_eps": "실제 EPS",
-    "surprise": "서프라이즈(%)",
-    "market_cap": "시가총액",  // 향후 추가 예정
-    "revenue_estimate": "매출 추정치",  // 향후 추가 예정
-    "call_status": "실적발표 상태"  // Scheduled, Completed, Cancelled
+    "event_type": "economic",
+    "date": "2024-03-10",
+    "event": "GDP Growth Rate",
+    "country": "United States",
+    "actual": "2.1",
+    "estimate": "2.0",
+    "prior": "2.0"
 }
 ```
 
-2. Economic
-```json
-{
-    "event": "이벤트명",
-    "country": "국가",
-    "for": "대상 기간",
-    "actual": "실제값",
-    "market_expectation": "시장 예상치",
-    "prior": "이전값",
-    "revised_from": "수정전 값"
-}
+## II. 주가 데이터 수집 및 분석
+
+### 1. 주가 데이터 수집
+
+수집된 이벤트 데이터를 기반으로 관련 기업들의 주가 데이터를 yfinance API를 통해 자동으로 수집합니다:
+
+```python
+import yfinance as yf
+
+# 주가 데이터 다운로드
+ticker = yf.Ticker("AAPL")
+hist = ticker.history(
+    start="2024-01-01",
+    end="2024-03-10",
+    interval="1d"
+)
 ```
 
-3. IPO
-```json
-{
-    "exchange": "거래소",
-    "date": "상장일",
-    "price_range": "공모가 범위",
-    "price": "확정 공모가",
-    "shares": "공모 주식수"
-}
-```
+### 2. 이벤트 영향 분석
 
-4. Stock Splits
-```json
-{
-    "payable_date": "지급일",
-    "optionable": "옵션 가능 여부",
-    "ratio": "분할 비율"
-}
-```
+#### 2.1 분석 지표
+- 이벤트 전후 3개월 주가 변동
+- 일일 수익률 변동성
+- 거래량 변화
+- 실적 서프라이즈와 주가 반응 상관관계
 
-## 주의사항
+#### 2.2 시각화 결과
+분석 결과는 HTML 형식의 인터랙티브 리포트로 생성됩니다:
+- 개별 기업 이벤트 영향 차트
+- 시가총액 기준 상위 기업 비교 분석
+- 서프라이즈 효과 분석 차트
 
-1. 과도한 요청을 방지하기 위해 기본적으로 1초의 딜레이가 설정되어 있습니다.
-2. 404 에러가 발생하는 페이지는 자동으로 건너뜁니다.
-3. 데이터 처리 중 오류가 발생해도 크롤링이 중단되지 않고 계속 진행됩니다.
+## III. 시스템 한계 및 향후 개선 방안
 
-## 의존성
+### 1. 현재 한계점
 
+1) **데이터 수집 제약**
+   - Yahoo Finance의 요청 제한
+   - 실시간 데이터 지연 (15-20분)
+   - 과거 데이터의 제한적 접근
+
+2) **분석 범위 제한**
+   - 시가총액 상위 기업 중심 분석
+   - 제한된 이벤트 유형
+
+### 2. 향후 개선 방안
+
+1) **데이터 소스 확장**
+   - 추가 금융 데이터 제공자 통합
+   - 소셜 미디어 센티먼트 분석 추가
+
+2) **분석 고도화**
+   - 머신러닝 모델 도입
+   - 실시간 알림 시스템 구축
+   - 포트폴리오 최적화 기능 추가
+
+3) **시스템 안정성 강화**
+   - 분산 크롤링 시스템 도입
+   - 데이터 검증 프로세스 강화
+   - 백업 및 복구 시스템 구축
+
+## IV. 설치 및 실행 요구사항
+
+### 1. 시스템 요구사항
 - Python >= 3.11
-- scrapy >= 2.12.0
-- twisted >= 24.11.0
-- service-identity >= 24.1.0
+- 메모리: 4GB 이상
+- 저장공간: 1GB 이상
 
-## 라이선스
+### 2. 필수 패키지 설치
+```bash
+pip install -r requirements.txt
+```
 
-MIT License 
+### 3. 환경 설정
+```bash
+# 프로젝트 루트 디렉토리에서
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+```
+
+## V. 라이선스 및 법적 고지
+
+본 시스템은 MIT 라이선스 하에 배포되며, Yahoo Finance의 이용 약관을 준수합니다. 수집된 데이터의 상업적 사용 시 관련 법규를 확인하시기 바랍니다.
+
+---
+작성자: [시스템 개발팀]
+작성일: 2024년 3월 10일
+버전: 1.0.0 
