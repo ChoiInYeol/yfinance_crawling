@@ -145,3 +145,13 @@
 2025-03-10 19:27:38,010 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192738_splits.json
 2025-03-10 19:27:38,012 [INFO] 임시 파일 삭제 완료
 2025-03-10 19:27:38,012 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:29:03,794 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:29:03,796 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:29:03,796 [INFO] Scrapy 명령어 실행: cd "C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\yfinance_calendar" && python -m scrapy crawl yahoo_calendar -L DEBUG -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json -t json
+2025-03-10 19:29:04,162 [ERROR] Scrapy 크롤링 실패 (종료 코드: 2)
+2025-03-10 19:29:04,162 [ERROR] 크롤링 중 오류가 발생하여 프로그램을 종료합니다.
+2025-03-10 19:29:11,853 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:29:11,854 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:29:11,854 [INFO] Scrapy 명령어 실행: cd "C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\yfinance_calendar" && python -m scrapy crawl yahoo_calendar -L DEBUG -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json -t json
+2025-03-10 19:29:12,206 [ERROR] Scrapy 크롤링 실패 (종료 코드: 2)
+2025-03-10 19:29:12,206 [ERROR] 크롤링 중 오류가 발생하여 프로그램을 종료합니다.
