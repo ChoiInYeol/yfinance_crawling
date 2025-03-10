@@ -115,10 +115,25 @@ def main():
     
     # Excel 파일로 저장
     with pd.ExcelWriter('event_analysis.xlsx', engine='openpyxl') as writer:
-        earnings_df.to_excel(writer, sheet_name='Earnings', index=False)
-        economic_df.to_excel(writer, sheet_name='Economic', index=False)
-        ipo_df.to_excel(writer, sheet_name='IPO', index=False)
-        splits_df.to_excel(writer, sheet_name='Splits', index=False)
+        # Earnings 데이터 저장
+        earnings_columns = ['date', 'Symbol', 'Company Name', 'Earnings Call Time', 
+                          'EPS Estimate', 'Reported EPS', 'Revenue Estimate', 
+                          'Reported Revenue', 'Surprise (%)']
+        earnings_df[earnings_columns].to_excel(writer, sheet_name='Earnings', index=False)
+        
+        # Economic 데이터 저장
+        economic_columns = ['date', 'Country', 'Event', 'Event Time', 
+                          'Actual', 'Forecast', 'Previous']
+        economic_df[economic_columns].to_excel(writer, sheet_name='Economic', index=False)
+        
+        # IPO 데이터 저장
+        ipo_columns = ['date', 'Symbol', 'Company Name', 'Exchange', 
+                      'Price Range', 'Shares Offered']
+        ipo_df[ipo_columns].to_excel(writer, sheet_name='IPO', index=False)
+        
+        # Splits 데이터 저장
+        splits_columns = ['date', 'Symbol', 'Company Name', 'Split Ratio']
+        splits_df[splits_columns].to_excel(writer, sheet_name='Splits', index=False)
         
         # 일별 이벤트 수 요약
         daily_counts = pd.DataFrame({
