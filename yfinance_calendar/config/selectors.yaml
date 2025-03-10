@@ -1,0 +1,65 @@
+# Yahoo Finance 캘린더 크롤링을 위한 XPath 선택자 정의
+# 마지막 업데이트: 2024-03-17
+
+common:
+  # 페이지네이션 관련 선택자
+  pagination:
+    results_count: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[1]/div/div/p'  # 전체 결과 수 표시
+    next_button: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[3]/div[3]/button[3]'  # 다음 페이지 버튼
+
+  # 테이블 기본 구조
+  table:
+    container: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]'  # 테이블 컨테이너
+    header_row: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr'  # 헤더 행
+
+# 각 캘린더 타입별 특화된 선택자
+earnings:
+  columns:
+    symbol: 
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[1]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div/a'
+      value_fallback: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div'
+    company:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[2]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[2]'
+    event_name:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[3]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[3]'
+    call_time:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[4]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[4]'
+    eps_estimate:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[5]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[5]'
+    reported_eps:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[6]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[6]'
+    surprise:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[7]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[7]'
+
+economic:
+  columns:
+    event:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[1]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]'
+    country:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[2]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[2]'
+    # 나머지 economic 컬럼들도 동일한 패턴으로 정의...
+
+ipo:
+  columns:
+    symbol:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[1]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div/a'
+      value_fallback: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div'
+    # 나머지 IPO 컬럼들도 동일한 패턴으로 정의...
+
+splits:
+  columns:
+    symbol:
+      header: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/thead/tr/th[1]'
+      value: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div/a'
+      value_fallback: '/html/body/div[2]/main/section/section/section/article/section/section[1]/div[2]/table/tbody/tr[{row_index}]/td[1]/div'
+    # 나머지 Splits 컬럼들도 동일한 패턴으로 정의... 

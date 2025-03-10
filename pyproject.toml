@@ -1,0 +1,23 @@
+[project]
+name = "yfinance-calendar-crawling"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "indi"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "yfinance>=0.2.54,<0.3.0",
+    "scrapy>=2.12.0,<3.0.0",
+    "twisted>=24.11.0",
+    "service-identity>=24.1.0",
+    "pandas (>=2.2.3,<3.0.0)",
+    "ipykernel (>=6.29.5,<7.0.0)",
+    "jupyter (>=1.1.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

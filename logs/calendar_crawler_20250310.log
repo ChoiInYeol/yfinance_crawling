@@ -1,0 +1,147 @@
+2025-03-10 19:14:00,062 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:14:00,062 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:14:00,062 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:14:12,938 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:14:12,939 [INFO] 수집된 전체 데이터 수: 0개
+2025-03-10 19:14:12,939 [INFO] earnings 데이터 수: 0개
+2025-03-10 19:14:12,939 [INFO] economic 데이터 수: 0개
+2025-03-10 19:14:12,940 [INFO] ipo 데이터 수: 0개
+2025-03-10 19:14:12,940 [INFO] splits 데이터 수: 0개
+2025-03-10 19:14:12,941 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:14:12,941 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:16:15,596 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:16:15,597 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:16:15,597 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:16:16,510 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:16:16,517 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:16:16,517 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:16:16,517 [INFO] economic 데이터 수: 73개
+2025-03-10 19:16:16,517 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:16:16,517 [INFO] splits 데이터 수: 26개
+2025-03-10 19:16:16,518 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191616_earnings.json
+2025-03-10 19:16:16,519 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191616_economic.json
+2025-03-10 19:16:16,520 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191616_ipo.json
+2025-03-10 19:16:16,520 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191616_splits.json
+2025-03-10 19:16:16,522 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:16:16,522 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:19:48,603 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:19:48,603 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:19:48,603 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:19:49,591 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:19:49,601 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:19:49,601 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:19:49,601 [INFO] economic 데이터 수: 73개
+2025-03-10 19:19:49,601 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:19:49,601 [INFO] splits 데이터 수: 26개
+2025-03-10 19:19:49,601 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191949_earnings.json
+2025-03-10 19:19:49,606 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191949_economic.json
+2025-03-10 19:19:49,606 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191949_ipo.json
+2025-03-10 19:19:49,606 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_191949_splits.json
+2025-03-10 19:19:49,608 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:19:49,608 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:20:01,772 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:20:01,773 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:20:01,774 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:20:02,698 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:20:02,705 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:20:02,706 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:20:02,706 [INFO] economic 데이터 수: 73개
+2025-03-10 19:20:02,707 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:20:02,707 [INFO] splits 데이터 수: 26개
+2025-03-10 19:20:02,708 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192002_earnings.json
+2025-03-10 19:20:02,709 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192002_economic.json
+2025-03-10 19:20:02,709 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192002_ipo.json
+2025-03-10 19:20:02,710 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192002_splits.json
+2025-03-10 19:20:02,711 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:20:02,712 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:20:26,886 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:20:26,886 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:20:26,886 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:20:42,188 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:20:42,192 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:20:42,192 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:20:42,192 [INFO] economic 데이터 수: 73개
+2025-03-10 19:20:42,192 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:20:42,196 [INFO] splits 데이터 수: 26개
+2025-03-10 19:20:42,197 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192042_earnings.json
+2025-03-10 19:20:42,198 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192042_economic.json
+2025-03-10 19:20:42,198 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192042_ipo.json
+2025-03-10 19:20:42,199 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192042_splits.json
+2025-03-10 19:20:42,200 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:20:42,200 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:23:59,044 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:23:59,044 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:23:59,044 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:23:59,971 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:23:59,977 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:23:59,977 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:23:59,977 [INFO] economic 데이터 수: 73개
+2025-03-10 19:23:59,977 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:23:59,977 [INFO] splits 데이터 수: 26개
+2025-03-10 19:23:59,978 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192359_earnings.json
+2025-03-10 19:23:59,980 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192359_economic.json
+2025-03-10 19:23:59,980 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192359_ipo.json
+2025-03-10 19:23:59,981 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192359_splits.json
+2025-03-10 19:23:59,982 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:23:59,982 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:24:08,668 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:24:08,681 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:24:08,681 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:24:25,130 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:24:25,145 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:24:25,145 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:24:25,145 [INFO] economic 데이터 수: 73개
+2025-03-10 19:24:25,145 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:24:25,145 [INFO] splits 데이터 수: 26개
+2025-03-10 19:24:25,145 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192425_earnings.json
+2025-03-10 19:24:25,150 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192425_economic.json
+2025-03-10 19:24:25,150 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192425_ipo.json
+2025-03-10 19:24:25,151 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192425_splits.json
+2025-03-10 19:24:25,153 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:24:25,153 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:26:24,398 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:26:24,398 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-11
+2025-03-10 19:26:24,398 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-11 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:26:39,086 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:26:39,097 [INFO] 수집된 전체 데이터 수: 360개
+2025-03-10 19:26:39,097 [INFO] earnings 데이터 수: 198개
+2025-03-10 19:26:39,097 [INFO] economic 데이터 수: 126개
+2025-03-10 19:26:39,097 [INFO] ipo 데이터 수: 2개
+2025-03-10 19:26:39,097 [INFO] splits 데이터 수: 34개
+2025-03-10 19:26:39,099 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192639_earnings.json
+2025-03-10 19:26:39,100 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192639_economic.json
+2025-03-10 19:26:39,100 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192639_ipo.json
+2025-03-10 19:26:39,101 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192639_splits.json
+2025-03-10 19:26:39,102 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:26:39,102 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:27:29,687 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:27:29,687 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-11
+2025-03-10 19:27:29,687 [INFO] 출력 디렉토리 생성: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output
+2025-03-10 19:27:29,687 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-11 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:27:30,882 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:27:30,882 [INFO] 수집된 전체 데이터 수: 360개
+2025-03-10 19:27:30,882 [INFO] earnings 데이터 수: 198개
+2025-03-10 19:27:30,882 [INFO] economic 데이터 수: 126개
+2025-03-10 19:27:30,882 [INFO] ipo 데이터 수: 2개
+2025-03-10 19:27:30,882 [INFO] splits 데이터 수: 34개
+2025-03-10 19:27:30,899 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192730_earnings.json
+2025-03-10 19:27:30,899 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192730_economic.json
+2025-03-10 19:27:30,900 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192730_ipo.json
+2025-03-10 19:27:30,901 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192730_splits.json
+2025-03-10 19:27:30,902 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:27:30,902 [INFO] 캘린더 데이터 수집 완료
+2025-03-10 19:27:37,078 [INFO] 캘린더 데이터 수집 시작
+2025-03-10 19:27:37,078 [INFO] 수집 기간: 2025-03-10 ~ 2025-03-10
+2025-03-10 19:27:37,078 [INFO] Scrapy 명령어 실행: scrapy crawl yahoo_calendar -a start_date=2025-03-10 -a end_date=2025-03-10 -o C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\temp_calendar_data.json
+2025-03-10 19:27:37,999 [INFO] Scrapy 크롤링 완료
+2025-03-10 19:27:37,999 [INFO] 수집된 전체 데이터 수: 198개
+2025-03-10 19:27:37,999 [INFO] earnings 데이터 수: 98개
+2025-03-10 19:27:37,999 [INFO] economic 데이터 수: 73개
+2025-03-10 19:27:37,999 [INFO] ipo 데이터 수: 1개
+2025-03-10 19:27:38,007 [INFO] splits 데이터 수: 26개
+2025-03-10 19:27:38,008 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192738_earnings.json
+2025-03-10 19:27:38,009 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192738_economic.json
+2025-03-10 19:27:38,009 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192738_ipo.json
+2025-03-10 19:27:38,010 [INFO] 파일 저장 완료: C:\Users\USER\Desktop\CORE16\yfinance_calendar_crawling\output\calendar_data_20250310_192738_splits.json
+2025-03-10 19:27:38,012 [INFO] 임시 파일 삭제 완료
+2025-03-10 19:27:38,012 [INFO] 캘린더 데이터 수집 완료
