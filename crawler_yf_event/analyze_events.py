@@ -26,6 +26,14 @@ def load_and_process_data(file_path):
     ipo_df = df[df['event_type'] == 'ipo'].copy()
     splits_df = df[df['event_type'] == 'splits'].copy()
     
+    # Economic 데이터의 날짜와 시간 결합
+    economic_df['Event Time'] = economic_df.apply(
+        lambda row: pd.to_datetime(f"{row['date'].strftime('%Y-%m-%d')} {row['Event Time']}", 
+                                 format='%Y-%m-%d %I:%M %p UTC',
+                                 errors='coerce'),
+        axis=1
+    )
+    
     return earnings_df, economic_df, ipo_df, splits_df
 
 def create_visualizations(earnings_df, economic_df, ipo_df, splits_df):
@@ -116,7 +124,7 @@ def main():
     # Excel 파일로 저장
     with pd.ExcelWriter('event_analysis.xlsx', engine='openpyxl') as writer:
         # Earnings 데이터 저장
-        earnings_columns = ['date', 'Symbol', 'Company', 'Earnings Call Time', 
+        earnings_columns = ['date', 'Symbol', 'Company', 'Event Name', 'Earnings Call Time', 
                           'EPS Estimate', 'Reported EPS', 'Surprise (%)']
         earnings_df[earnings_columns].to_excel(writer, sheet_name='Earnings', index=False)
         
