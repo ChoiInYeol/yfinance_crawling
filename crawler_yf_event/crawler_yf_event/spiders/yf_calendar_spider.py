@@ -121,7 +121,7 @@ class YFCalendarSpider(scrapy.Spider):
         # 테이블 추출
         table = response.xpath(config['table'])
         if not table:
-            if retry_count < 3:  # 최대 3번까지 재시도
+            if retry_count < 2:  # 최대 2번까지 재시도
                 self.logger.warning(f'Table not found for {event_type} on {date}, retrying... (attempt {retry_count + 1})')
                 yield scrapy.Request(
                     url=response.url,
@@ -183,18 +183,21 @@ class YFCalendarSpider(scrapy.Spider):
         next_button = response.xpath(config['next_button'])
         if next_button and total_results > 100:
             current_url = response.url
+            next_offset = 100  # 기본값 설정
+            
             if 'offset=' in current_url:
                 current_offset = int(re.search(r'offset=(\d+)', current_url).group(1))
                 next_offset = current_offset + 100
                 next_url = re.sub(r'offset=\d+', f'offset={next_offset}', current_url)
             else:
-                next_url = f"{current_url}&offset=100"
+                next_url = f"{current_url}&offset={next_offset}"
             
             # earnings의 경우 offset이 1000을 넘어가면 중단
             if event_type == 'earnings' and next_offset > 1000:
                 self.logger.warning(f'Reached maximum offset for earnings on {date}')
                 return
                 
+            self.logger.info(f'Moving to next page with offset {next_offset} for {event_type} on {date}')
             yield scrapy.Request(
                 url=next_url,
                 callback=self.parse,

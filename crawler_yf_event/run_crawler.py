@@ -51,7 +51,7 @@ if __name__ == "__main__":
     parser.add_argument('--start-date', type=str, help='시작 날짜 (YYYY-MM-DD)')
     parser.add_argument('--end-date', type=str, help='종료 날짜 (YYYY-MM-DD)')
     parser.add_argument('--events', type=str, help='수집할 이벤트 타입 (쉼표로 구분)')
-    parser.add_argument('--days', type=int, default=20, help='현재 날짜 기준 전후 수집할 일수')
+    parser.add_argument('--days', type=int, default=7, help='현재 날짜 기준 전후 수집할 일수')
     
     args = parser.parse_args()
     
