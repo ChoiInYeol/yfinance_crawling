@@ -152,7 +152,7 @@ pip install -r requirements.txt
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 ```
 
-## V. 라이선스 및 법적 고지
+## IV. 라이선스 및 법적 고지
 
 본 시스템은 MIT 라이선스 하에 배포되며, Yahoo Finance의 이용 약관을 준수합니다. 수집된 데이터의 상업적 사용 시 관련 법규를 확인하시기 바랍니다.
 
